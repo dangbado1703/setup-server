@@ -31,6 +31,9 @@ const login = async (req: Request, res: Response) => {
         username,
         password,
         token,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        gen: user.gen,
       },
     });
   } catch (error) {

@@ -3,9 +3,10 @@ import auth from "../models/auth.model";
 import argon2 from "argon2";
 
 const register = async (req: Request, res: Response) => {
-  const { username, password } = req.body;
+  const { username, password, day, month, year, last_name, first_name, gen } =
+    req.body;
 
-  if (!username || !password) {
+  if (!username || !password || !last_name || !first_name) {
     return res
       .status(400)
       .json({ success: true, message: "Vui lòng nhập đủ các trường" });
@@ -21,6 +22,10 @@ const register = async (req: Request, res: Response) => {
     const newUser = new auth({
       username,
       password,
+      last_name,
+      first_name,
+      gen,
+      birthday: day + "-" + month + "-" + year,
     });
     await newUser.save();
     return res.status(200).json({
@@ -29,6 +34,10 @@ const register = async (req: Request, res: Response) => {
       data: {
         username,
         password,
+        last_name,
+        first_name,
+        gen,
+        birthday: day + "-" + month + "-" + year,
       },
     });
   } catch (error) {
