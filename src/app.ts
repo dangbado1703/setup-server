@@ -14,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/auth", apiRoute.authRouter);
+app.use("/api", apiRoute.profileRouter);
 
 app.listen(port, () => {
   console.log(`server on port ${port}`);

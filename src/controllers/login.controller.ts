@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import auth from "../models/auth.model";
-import argon2 from "argon2";
 import jwt from "jsonwebtoken";
+import auth from "../models/auth.model";
 
 const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;
