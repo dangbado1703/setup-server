@@ -26,6 +26,8 @@ const register = async (req: Request, res: Response) => {
       first_name,
       gen,
       birthday: day + "-" + month + "-" + year,
+      avatar: '',
+      coverImage: ''
     });
     await newUser.save();
     return res.status(200).json({

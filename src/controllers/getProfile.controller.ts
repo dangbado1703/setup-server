@@ -6,18 +6,11 @@ const getProfile = async (req: Request, res: Response) => {
   try {
     if (username) {
       const info = await auth.findOne<IFormInfo | null>({ username });
+      console.log(info);
       return res.status(200).json({
         message: "Lấy thông tin thành công",
         success: true,
-        data: {
-          username: info?.username,
-          firstName: info?.first_name,
-          lastName: info?.last_name,
-          gen: info?.gen,
-          avatar: info?.avatar,
-          coverImage: info?.coverImage,
-          birthDay: info?.birthday,
-        },
+        data: info,
       });
     }
   } catch (error) {
