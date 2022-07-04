@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { exPiresTime } from "../config/constans";
 import auth from "../models/auth.model";
 
 const login = async (req: Request, res: Response) => {
@@ -22,7 +23,7 @@ const login = async (req: Request, res: Response) => {
         .status(400)
         .json({ status: false, message: "Sai tài khoản hoặc mật khẩu" });
     }
-    const token = jwt.sign({ userId: user._id }, "SECRET_KEY");
+    const token = jwt.sign({ userId: user._id }, "SECRET_KEY", {expiresIn: exPiresTime});
     return res.status(200).json({
       success: true,
       message: "Đăng nhập thành công",

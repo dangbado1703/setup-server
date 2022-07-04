@@ -1,0 +1,1 @@
+export const exPiresTime = 5 * 60
