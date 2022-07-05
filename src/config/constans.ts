@@ -1,1 +1,1 @@
-export const exPiresTime = 5 * 60
+export const exPiresTime = 50 * 60 * 1000;
