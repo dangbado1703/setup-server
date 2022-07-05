@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import auth, { IFormInfo } from "../models/auth.model";
+import auth from "../models/auth.model";
+import { IFormInfo } from "../typemodel/typeabout";
 
 const getProfile = async (req: Request, res: Response) => {
   const { username } = req.body;
@@ -10,13 +11,14 @@ const getProfile = async (req: Request, res: Response) => {
         return res.status(200).json({
           message: "Lấy thông tin thành công",
           success: true,
-          data: info,
+          data: {
+            info,
+          },
         });
       } else {
         return res.status(400).json({
           message: "Không tồn tại user này",
           success: false,
-          data: info,
         });
       }
     } else {

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import auth from "../models/auth.model";
-import argon2 from "argon2";
 
 const register = async (req: Request, res: Response) => {
   const { username, password, day, month, year, last_name, first_name, gen } =
@@ -26,8 +25,20 @@ const register = async (req: Request, res: Response) => {
       first_name,
       gen,
       birthday: day + "-" + month + "-" + year,
-      avatar: '',
-      coverImage: ''
+      avatar: "",
+      coverImage: "",
+      company: "",
+      position: "",
+      description: "",
+      schoolName: "",
+      graduated: null,
+      descriptionSchool: "",
+      degree: "",
+      degreeInput: "",
+      province: "",
+      from: "",
+      married: "",
+      phone: "",
     });
     await newUser.save();
     return res.status(200).json({
